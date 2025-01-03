@@ -1,0 +1,24 @@
+# apiVersionとkindは
+# kubectl api-resources
+# で確認
+# https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+# Service
+# https://kubernetes.io/ja/docs/concepts/services-networking/service/
+metadata:
+  namespace: vol-test
+  name: hashy
+  labels:
+    # You should set the "kubernetes.io/service-name" label.
+    # Set its value to match the name of the Service
+    kubernetes.io/service-name: hashy
+addressType: IPv4
+ports:
+  - name: https
+    appProtocol: https
+    protocol: TCP
+    port: 80
+endpoints:
+  - addresses:
+      - "103.152.178.42"
