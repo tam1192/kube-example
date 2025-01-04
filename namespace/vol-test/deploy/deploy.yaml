@@ -41,3 +41,11 @@ spec:
           # コンテナが空いてるポート番号
           ports:
           - containerPort: 80
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html/
+            name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: my-pv
+            readOnly: false
