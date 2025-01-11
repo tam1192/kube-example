@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: my-pv
-  namespace: hello_kube_01
+  namespace: hello-kube-01
   labels:
     app: nginx
 spec:

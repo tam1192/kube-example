@@ -9,7 +9,7 @@ kind: Deployment
 metadata:
   name: "nginx-deploy"
   # namespaceの指定
-  namespace: hello_kube_01
+  namespace: hello-kube-01
   # label指定
   labels: 
     # deploy環境について
@@ -22,7 +22,7 @@ spec:
       app: nginx
   template:
     metadata:
-      namespace: "vol-test"
+      namespace: hello-kube-01
       labels:
         app: nginx
     spec:

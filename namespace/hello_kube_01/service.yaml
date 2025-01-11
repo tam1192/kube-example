@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: hello_kube_01
+  namespace: hello-kube-01
   name: nginx-service
 spec:
   selector:
