@@ -1,0 +1,17 @@
+# apiVersionとkindは
+# kubectl api-resources
+# で確認
+# https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: hello_kube_01
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
