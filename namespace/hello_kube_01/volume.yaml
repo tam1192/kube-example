@@ -3,10 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: my-pv
   namespace: hello-kube-01
-  labels:
-    app: nginx
 spec:
-  storageClassName: cephfs
+  storageClassName: k8s-test
   accessModes:
     - ReadWriteMany
   resources:
