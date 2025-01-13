@@ -33,7 +33,7 @@ spec:
             # 最小
             requests:
               memory: "1Gi"
-              cpu: "0.5"
+              cpu: "0.1"
             # 最大
             limits:
               memory: "2Gi"
