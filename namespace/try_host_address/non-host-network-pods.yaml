@@ -1,0 +1,25 @@
+# apiVersionとkindは
+# kubectl api-resources
+# で確認
+# https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/
+apiVersion: v1
+kind: Pod
+# Deploymentについて
+# https://kubernetes.io/ja/docs/concepts/workloads/pods/
+metadata:
+  name: nhn-alpine
+spec:
+  containers:
+  - name: alpine
+    image: alpine:3.21.2
+    resources:
+      # 最小
+      requests:
+        memory: "128Mi"
+        cpu: "0.1"
+      # 最大
+      limits:
+        memory: "2Gi"
+        cpu: "1"
+    stdin: true
+    tty: true
