@@ -1,0 +1,19 @@
+# apiVersionとkindは
+# kubectl api-resources
+# で確認
+# https://kubernetes.io/docs/reference/kubectl/generated/kubectl_api-resources/
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-service
+  namespace: ingress
+spec:
+  selector:
+    name: nginx-ingress-microk8s
+  type: LoadBalancer
+  loadBalancerIP: 202.226.7.82
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
