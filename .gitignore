@@ -1,1 +1,2 @@
-cert-manager/*
+/cert-manager/*
+!/cert-manager/template.*
