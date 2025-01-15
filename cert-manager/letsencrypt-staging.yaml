@@ -1,21 +1,25 @@
 # 参考: https://dev.to/hkhelil/using-nginx-ingress-controller-and-cert-manager-for-https-with-lets-encrypt-2flh
 # 参考: https://zenn.dev/masaaania/articles/e54119948bbaa2
 # 公式: https://cert-manager.io/docs/tutorials/acme/http-validation/
+# mk8s公式: https://microk8s.io/docs/addon-cert-manager
+# mk8s公式が正直一番わかりやすかった
 apiVersion: cert-manager.io/v1
 # https://cert-manager.io/docs/concepts/issuer/
 # Clusterにすることで、namespaceまたげる
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-staging
+   name: lets-encrypt
 spec:
-  acme:
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: tamkame123@outlook.com
-    privateKeySecretRef:
-      name: letsencrypt-staging-account-key
-    solvers:
-      # http認証する際に使うingress
+   acme:
+      email: tamkame123@outlook.com
+      server: https://acme-v02.api.letsencrypt.org/directory
+      privateKeySecretRef:
+         # Secret resource that will be used to store the account's private key.
+         name: lets-encrypt-priviate-key
+   # Add a single challenge solver, HTTP01 using nginx
+   solvers:
+   # http認証する際に使うingress
       - http01:
-          ingress:
-            # とりあえず初期
-            class: nginx
+            ingress:
+               class: public
+        
