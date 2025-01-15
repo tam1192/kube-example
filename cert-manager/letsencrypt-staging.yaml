@@ -16,10 +16,27 @@ spec:
       privateKeySecretRef:
          # Secret resource that will be used to store the account's private key.
          name: lets-encrypt-priviate-key
-   # Add a single challenge solver, HTTP01 using nginx
-   solvers:
-   # http認証する際に使うingress
-      - http01:
-            ingress:
-               class: public
-        
+      # Add a single challenge solver, HTTP01 using nginx
+      solvers:
+      # http認証する際に使うingress
+      # - http01:
+      #    ingress:
+      #       class: public
+      # 結局LBとか挟むとめんどそうなのでやめた
+      # 参考: https://cert-manager.io/docs/configuration/acme/dns01/cloudflare/
+      - dns01:
+         cloudflare:
+            email: my-cloudflare-acc@example.com
+            apiKeySecretRef:
+               name: cloudflare-api-key-secret
+               key: api-key
+
+# cloudflareのapi
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: cloudflare-api-token-secret
+# type: Opaque
+# stringData:
+#   api-token: <API Token>
+#
