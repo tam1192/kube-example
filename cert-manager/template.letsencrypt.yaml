@@ -26,12 +26,11 @@
 #       # 参考: https://cert-manager.io/docs/configuration/acme/dns01/cloudflare/
 #       - dns01:
 #          cloudflare:
-#             email: my-cloudflare-acc@example.com
-#             apiKeySecretRef:
-#                name: cloudflare-api-key-secret
-#                key: api-key
+#             apiTokenSecretRef:
+#                name: cloudflare-api-token-secret
+#                key: api-token
 
-# ---
+# --- 
 
 # # cloudflareのapi
 # apiVersion: v1
