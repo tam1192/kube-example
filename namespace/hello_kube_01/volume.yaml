@@ -10,3 +10,18 @@ spec:
   resources:
     requests:
       storage: 20Gi
+
+# ---
+
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: rbd-test
+#   namespace: hello-kube-01
+# spec:
+#   storageClassName: ceph-rbd
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 20Gi
