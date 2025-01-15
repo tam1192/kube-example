@@ -16,16 +16,28 @@ spec:
       port: 80
       targetPort: 80
 
----
+--- 
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: http-ingress
   namespace: hello-kube-01
+  # 参考: https://cert-manager.io/docs/tutorials/acme/nginx-ingress/
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
 spec:
+  ingressClassName: nginx
+  tls:
+  # サブドメインの制約？
+  # https://stackoverflow.com/questions/71127151/ssl-certificate-added-but-shows-kubernetes-ingress-controller-fake-certificate
+  # あんま関係ないかも:https://stackoverflow.com/questions/74314692/kubernetes-ingress-controller-cannot-find-tls-certificate-secret
+  - hosts:
+    - 'adw39.org'
+    secretName: myweb-ingress-tls
   rules:
-  - http:
+  - host: adw39.org
+    http:
       paths:
       - path: /
         pathType: Prefix
