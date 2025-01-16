@@ -20,15 +20,13 @@ spec:
       # Add a single challenge solver, HTTP01 using nginx
       solvers:
       # http認証する際に使うingress
-      - http01:
-         ingress:
-            class: public
+      # - http01:
+      #    ingress:
+      #       class: public
       # 結局LBとか挟むとめんどそうなのでやめた
       # 参考: https://cert-manager.io/docs/configuration/acme/dns01/cloudflare/
-      # - dns01:
-      #    cloudflare:
-      #       apiTokenSecretRef:
-      #          name: cloudflare-api-token-secret
-      #          key: api-token
-
-# --- 
+      - dns01:
+         cloudflare:
+            apiTokenSecretRef:
+               name: cloudflare-api-token-secret
+               key: api-token
