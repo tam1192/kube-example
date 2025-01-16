@@ -1,0 +1,22 @@
+# offcial Docs: https://metallb.universe.tf/usage/example/
+
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: production
+spec:
+  # Production services will go here. Public IPs are expensive, so we leased
+  # just 4 of them.
+  addresses:
+  - 202.226.7.80/28
+
+---
+
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: test
+  # namespace: metallb-system
+spec:
+  interfaces:
+  - enp5s0
